@@ -19,7 +19,7 @@
     },
     "build": {
       "name": "build",
-      "command": "yarn build",
+      "command": "yarn run build",
       "runAtStart": false
     },
     "lint": {
