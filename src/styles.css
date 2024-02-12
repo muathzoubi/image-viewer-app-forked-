@@ -1,0 +1,191 @@
+@import "@radix-ui/colors/black-alpha.css";
+@import "@radix-ui/colors/green.css";
+@import "@radix-ui/colors/mauve.css";
+@import "@radix-ui/colors/violet.css";
+.App {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+#thumbnails img,
+#main {
+  box-shadow: 0 5px 10px rgba(92, 0, 252, 0.5);
+  border-radius: 10px;
+}
+* {
+  transition: all 0.5s ease;
+}
+#thumbnails {
+  text-align: center;
+}
+#thumbnails img {
+  width: 90px;
+  height: 90px;
+  margin: 5px;
+  cursor: pointer;
+}
+@media only screen and (max-width: 480px) {
+  #thumbnails img {
+    width: 50px;
+    height: 50px;
+  }
+}
+#thumbnails img:hover {
+  transform: scale(1.15);
+}
+#main {
+  width: 50%;
+  margin: 20px auto;
+}
+@media only screen and (max-width: 480px) {
+  #main {
+    width: 150px;
+    height: "80vh";
+  }
+}
+.hidden {
+  opacity: 0;
+}
+
+.showcase {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.video-container video {
+  min-width: 100%;
+  min-height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+}
+
+.video-container:after {
+  content: "";
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+}
+
+.content {
+  z-index: 2;
+}
+a {
+  position: relative;
+  display: inline-block;
+  padding: 15px 30px;
+  border: 2px solid #fefefe;
+  text-transform: uppercase;
+  color: #fefefe;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+a::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% - 12px);
+  background-color: #212121;
+  transition: 0.3s ease-in-out;
+  transform: scaleY(1);
+  z-index: -1;
+}
+
+a:hover::before {
+  transform: scaleY(0);
+}
+
+a::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: -2px;
+  height: calc(100% + 4px);
+  width: calc(100% - 12px);
+  background-color: #00000081;
+  transition: 0.3s ease-in-out;
+  transform: scaleX(1);
+  transition-delay: 0.5s;
+  color: fff;
+}
+
+a:hover::after {
+  transform: scaleX(0);
+}
+
+a span {
+  position: relative;
+  z-index: 3;
+}
+/* === removing default button style ===*/
+.button {
+  margin: 0;
+  height: auto;
+  background: transparent;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+}
+
+/* button styling */
+.button {
+  --border-right: 6px;
+  --text-stroke-color: rgba(255, 255, 255, 0.6);
+  --animation-color: #37ff8b;
+  --fs-size: 2em;
+  letter-spacing: 3px;
+  text-decoration: none;
+  font-size: var(--fs-size);
+  font-family: "Arial";
+  position: relative;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--text-stroke-color);
+}
+/* this is the text, when you hover on button */
+.hover-text {
+  position: absolute;
+  box-sizing: border-box;
+  content: attr(data-text);
+  color: var(--animation-color);
+  width: 0%;
+  inset: 0;
+  border-right: var(--border-right) solid var(--animation-color);
+  overflow: hidden;
+  transition: 0.5s;
+  -webkit-text-stroke: 1px var(--animation-color);
+}
+/* hover */
+.button:hover .hover-text {
+  width: 100%;
+  filter: drop-shadow(0 0 23px var(--animation-color));
+  border: var(--animation-color) 1px solid;
+  border-radius: 5px;
+  scale: 1.1;
+}
